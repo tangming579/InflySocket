@@ -15,6 +15,13 @@ namespace InflySocket
     {
         #region Public
         public char separator = '#';
+        public delegate void OnNewConnectedHandler(SessionBase newClient);
+        public delegate void OnReceviceMessageHandler(string msg);
+
+        public event OnNewConnectedHandler OnNewConnectedEvent;
+        public event OnReceviceMessageHandler OnReceviceMessageEvent;
+        public event OnNewConnectedHandler OnCloseEvent;
+
         #endregion
 
         #region Socket
@@ -57,15 +64,15 @@ namespace InflySocket
                     Socket sokConnection = socket.Accept(); // 一旦监听到一个客户端的请求，就返回一个与该客户端通信的 套接字；
                     // 将与客户端连接的 套接字 对象添加到集合中；
                     string str_EndPoint = sokConnection.RemoteEndPoint.ToString();
-                    SessionBase myTcpClient = new SessionBase() { TcpSocket = sokConnection, EndPoint = str_EndPoint };                    
+                    SessionBase myTcpClient = new SessionBase() { TcpSocket = sokConnection, EndPoint = str_EndPoint };
                     Clients.Add(myTcpClient);
                     OnNewConnected(myTcpClient);
                     Task.Run(() =>
                     {
-                        ProcessLinesAsync(sokConnection).ConfigureAwait(false);
-                    });                   
+                        ProcessLinesAsync(myTcpClient).ConfigureAwait(false);
+                    });
                 }
-                catch(Exception exp)
+                catch (Exception exp)
                 {
 
                 }
@@ -81,7 +88,7 @@ namespace InflySocket
 
         public void Send(byte[] buf)
         {
-            foreach(var client in Clients)
+            foreach (var client in Clients)
             {
                 client.Send(buf);
             }
@@ -99,29 +106,33 @@ namespace InflySocket
         protected virtual void OnNewConnected(SessionBase newClient)
         {
             Console.WriteLine(newClient.EndPoint);
+            OnNewConnectedEvent?.Invoke(newClient);
         }
 
         protected virtual void OnReceviceMessage(string msg)
         {
             Console.WriteLine(msg);
+            OnReceviceMessageEvent?.Invoke(msg);
         }
 
         protected virtual void OnClientClose(SessionBase newClient)
         {
-
+            OnCloseEvent?.Invoke(newClient);
         }
 
         #endregion
 
         #region Pipelines
 
-        async Task ProcessLinesAsync(Socket socket)
+        async Task ProcessLinesAsync(SessionBase sessionBase)
         {
             var pipe = new Pipe();
-            Task writing = FillPipeAsync(socket, pipe.Writer);
+            Task writing = FillPipeAsync(sessionBase.TcpSocket, pipe.Writer);
             Task reading = ReadPipeAsync(pipe.Reader);
 
             await Task.WhenAll(reading, writing);
+
+            OnClientClose(sessionBase);
         }
 
         //写入循环
