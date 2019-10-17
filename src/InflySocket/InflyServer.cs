@@ -67,10 +67,8 @@ namespace InflySocket
                     SessionBase myTcpClient = new SessionBase() { TcpSocket = sokConnection, EndPoint = str_EndPoint };
                     Clients.Add(myTcpClient);
                     OnNewConnected(myTcpClient);
-                    Task.Run(() =>
-                    {
-                        ProcessLinesAsync(myTcpClient).ConfigureAwait(false);
-                    });
+
+                    ProcessLinesAsync(myTcpClient).ConfigureAwait(false);
                 }
                 catch (Exception exp)
                 {
@@ -197,7 +195,7 @@ namespace InflySocket
                         // 处理这一行
                         ProcessLine(buffer.Slice(0, position.Value).ToArray());
 
-                        // 跳过 这一行+\n (basically position 主要位置？)
+                        // 跳过 这一行
                         buffer = buffer.Slice(buffer.GetPosition(1, position.Value));
                     }
                 }
