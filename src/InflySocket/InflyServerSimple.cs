@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace InflySocket
 {
-    public class InflyServer
+    public class InflyServerSimple
     {
         #region Public
         public char separator = '#';
@@ -68,7 +68,10 @@ namespace InflySocket
                     Clients.Add(myTcpClient);
                     OnNewConnected(myTcpClient);
 
-                    ProcessLinesAsync(myTcpClient).ConfigureAwait(false);
+                    Task.Run(() =>
+                    {
+                        ProcessLinesAsync(myTcpClient).ConfigureAwait(false);
+                    });                    
                 }
                 catch (Exception exp)
                 {

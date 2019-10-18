@@ -22,7 +22,7 @@ namespace PipeLinesDemo
     /// </summary>
     public partial class MainWindow : Window
     {
-        InflyServer server = new InflyServer();
+        InflyServerSimple server = new InflyServerSimple();
 
         public MainWindow()
         {

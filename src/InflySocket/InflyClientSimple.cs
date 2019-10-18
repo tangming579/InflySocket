@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace InflySocket
 {
-    public class InflyClient
+    public class InflyClientSimple
     {
         private bool running;
         private Socket socket;
