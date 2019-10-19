@@ -13,7 +13,7 @@ namespace InflySocket
         private bool running;
         private Socket socket;
 
-        public void Connect(string ip,int port)
+        public void Connect(string ip, int port)
         {
             socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             IPAddress iPAddress = IPAddress.Parse(ip);
@@ -33,7 +33,7 @@ namespace InflySocket
                         Received();
                     }
                 }
-               
+
             });
         }
 
@@ -47,12 +47,14 @@ namespace InflySocket
 
         protected virtual void Send(byte[] buf)
         {
-
+            if (socket.Connected)
+                socket.Send(buf);
         }
 
         protected virtual void Send(string msg)
         {
-
+            var sendMsg = System.Text.Encoding.UTF8.GetBytes(msg);
+            Send(sendMsg);
         }
     }
 }

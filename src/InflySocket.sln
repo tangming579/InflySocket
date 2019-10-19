@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.852
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29215.179
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InflySocket", "InflySocket\InflySocket.csproj", "{9228E1A5-4FB5-443F-91AB-203ABEE8D348}"
 EndProject
@@ -14,6 +14,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExInflyServer", "Example\ExInflyServer\ExInflyServer.csproj", "{D7FEFB98-476A-4822-A4A3-E7428EFDE09F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExSimpleClient", "Example\ExSimpleClient\ExSimpleClient.csproj", "{4573462F-A509-4A6D-A9B4-E0043CACF569}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InflySocketServer", "InflySocketServer\InflySocketServer.csproj", "{CCC1D902-4ADC-4209-B883-E651AFB6E2C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InflySocketClient", "InflySocketClient\InflySocketClient.csproj", "{F38303EC-C211-4560-8899-CDC6D7AAAE1D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +45,14 @@ Global
 		{4573462F-A509-4A6D-A9B4-E0043CACF569}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4573462F-A509-4A6D-A9B4-E0043CACF569}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4573462F-A509-4A6D-A9B4-E0043CACF569}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCC1D902-4ADC-4209-B883-E651AFB6E2C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCC1D902-4ADC-4209-B883-E651AFB6E2C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCC1D902-4ADC-4209-B883-E651AFB6E2C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCC1D902-4ADC-4209-B883-E651AFB6E2C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F38303EC-C211-4560-8899-CDC6D7AAAE1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F38303EC-C211-4560-8899-CDC6D7AAAE1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F38303EC-C211-4560-8899-CDC6D7AAAE1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F38303EC-C211-4560-8899-CDC6D7AAAE1D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
