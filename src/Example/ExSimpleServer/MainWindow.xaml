@@ -5,8 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ExSimpleServer"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="InflyServer" Height="550" Width="700">
     <Grid>
-        
+        <TextBlock HorizontalAlignment="Left" Margin="43,67,0,0" TextWrapping="Wrap" Text="端口号：" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="96,63,0,0" TextWrapping="Wrap" Text="9999" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btnStart" Content="启动" HorizontalAlignment="Left" Margin="573,67,0,0" VerticalAlignment="Top" Width="75" Click="BtnStart_Click"/>
+        <TextBox x:Name="txbClients" HorizontalAlignment="Left" Height="262" IsReadOnly="True" Margin="43,122,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="202"/>
+        <TextBox x:Name="txbMsg" HorizontalAlignment="Left" Height="262" IsReadOnly="True" Margin="295,122,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="353"/>
+        <Button x:Name="btnSend" Content="发送" HorizontalAlignment="Left" Margin="573,413,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="1.525,0.741" Click="BtnSend_Click"/>
+        <TextBox x:Name="txbSend" HorizontalAlignment="Left" Height="23" Margin="295,409,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="249"/>
+
     </Grid>
 </Window>

@@ -24,5 +24,15 @@ namespace ExInflyClient
         {
             InitializeComponent();
         }
+
+        private void BtnConnect_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnSend_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
