@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InflySocket;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,8 @@ namespace ExSimpleClient
     /// </summary>
     public partial class MainWindow : Window
     {
+        InflyClientSimple client = new InflyClientSimple();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -27,12 +30,12 @@ namespace ExSimpleClient
 
         private void BtnConnect_Click(object sender, RoutedEventArgs e)
         {
-
+            client.Connect(txbIP.Text, int.Parse(txbPort.Text));
         }
 
         private void BtnSend_Click(object sender, RoutedEventArgs e)
         {
-
+            
         }
     }
 }
