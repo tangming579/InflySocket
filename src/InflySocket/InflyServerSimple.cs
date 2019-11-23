@@ -75,7 +75,7 @@ namespace InflySocket
                 }
                 catch (Exception exp)
                 {
-
+                    throw exp;
                 }
                 Thread.Sleep(200);
             }
