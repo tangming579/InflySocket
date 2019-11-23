@@ -53,7 +53,7 @@ namespace InflySocket
                         }
                         else
                         {
-                            ProcessLinesAsync(socket).ConfigureAwait(false); ;
+                            ProcessLinesAsync(socket).ConfigureAwait(false);
                         }
                     }
                     catch (SocketException exp)
@@ -67,15 +67,12 @@ namespace InflySocket
 
         protected virtual void OnClosed()
         {
-
+            OnCloseEvent?.Invoke();
         }
 
         protected virtual void OnReceviceMessage(string message)
         {
-            while (running & socket.Connected)
-            {
-
-            }
+            OnReceviceMessageEvent?.Invoke(message);
         }
 
         public void Send(byte[] buf)

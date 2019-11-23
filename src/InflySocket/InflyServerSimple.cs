@@ -32,6 +32,8 @@ namespace InflySocket
 
         public bool Listen(int port)
         {
+            if (socket != null)
+                socket.Close();
             socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             IPEndPoint endPoint = new IPEndPoint(IPAddress.Any, port);
             try
@@ -39,7 +41,7 @@ namespace InflySocket
                 // 将负责监听的套接字绑定到唯一的ip和端口上；
                 socket.Bind(endPoint);
             }
-            catch
+            catch(Exception exp)
             {
                 return false;
             }

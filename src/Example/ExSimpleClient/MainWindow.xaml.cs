@@ -45,6 +45,7 @@ namespace ExSimpleClient
             Dispatcher.BeginInvoke(new Action(() =>
             {
                 txbMsg.AppendText($"连接{'\n'}");
+                btnConnect.Content = "已连接";
             }));
         }
 
@@ -53,6 +54,7 @@ namespace ExSimpleClient
             Dispatcher.BeginInvoke(new Action(() =>
             {
                 txbMsg.AppendText($"已断开{'\n'}");
+                btnConnect.Content = "连接";
             }));
         }
 
@@ -64,6 +66,7 @@ namespace ExSimpleClient
         private void BtnSend_Click(object sender, RoutedEventArgs e)
         {
             client.Send(txbSend.Text);
+            txbMsg.AppendText($"发送消息：{txbSend.Text}{'\n'}");
         }
     }
 }
