@@ -16,6 +16,13 @@ namespace InflySocket
         private bool running;
         private Socket socket;
         public char separator = '#';
+        public delegate void OnConnectedHandler();
+        public delegate void OnReceviceMessageHandler(string msg);
+        public delegate void OnClosedHandler();
+
+        public event OnConnectedHandler OnConnectedEvent;
+        public event OnReceviceMessageHandler OnReceviceMessageEvent;
+        public event OnClosedHandler OnCloseEvent;
 
         public bool IsConnected
         {

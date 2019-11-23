@@ -26,11 +26,31 @@ namespace ExSimpleClient
         public MainWindow()
         {
             InitializeComponent();
+
+            client.OnReceviceMessageEvent += Client_OnReceviceMessageEvent;
+            client.OnConnectedEvent += Client_OnConnectedEvent;
+            client.OnCloseEvent += Client_OnCloseEvent;
+        }
+
+        private void Client_OnReceviceMessageEvent(string msg)
+        {
+            
+        }
+
+        private void Client_OnConnectedEvent()
+        {
+            
+        }
+
+        private void Client_OnCloseEvent()
+        {
+            throw new NotImplementedException();
         }
 
         private void BtnConnect_Click(object sender, RoutedEventArgs e)
         {
-            client.Connect(txbIP.Text, int.Parse(txbPort.Text));
+            client.Connect(txbIP.Text, int.Parse(txbPort.Text));c
+            
         }
 
         private void BtnSend_Click(object sender, RoutedEventArgs e)
