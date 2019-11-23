@@ -34,23 +34,31 @@ namespace ExSimpleClient
 
         private void Client_OnReceviceMessageEvent(string msg)
         {
-            
+            Dispatcher.BeginInvoke(new Action(() =>
+            {
+                txbMsg.AppendText($"收到消息：{msg}{'\n'}");
+            }));
         }
 
         private void Client_OnConnectedEvent()
         {
-            
+            Dispatcher.BeginInvoke(new Action(() =>
+            {
+                txbMsg.AppendText($"连接{'\n'}");
+            }));
         }
 
         private void Client_OnCloseEvent()
         {
-            throw new NotImplementedException();
+            Dispatcher.BeginInvoke(new Action(() =>
+            {
+                txbMsg.AppendText($"已断开{'\n'}");
+            }));
         }
 
         private void BtnConnect_Click(object sender, RoutedEventArgs e)
         {
-            client.Connect(txbIP.Text, int.Parse(txbPort.Text));c
-            
+            client.Connect(txbIP.Text, int.Parse(txbPort.Text));
         }
 
         private void BtnSend_Click(object sender, RoutedEventArgs e)

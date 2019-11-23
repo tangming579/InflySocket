@@ -38,19 +38,27 @@ namespace InflySocket
             socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             IPAddress iPAddress = IPAddress.Parse(ip);
             IPEndPoint point = new IPEndPoint(iPAddress, port);
+            running = true;
 
             Task.Run(() =>
             {
                 while (running)
                 {
-                    if (!socket.Connected)
+                    try
                     {
-                        socket.Connect(point);
-                        Thread.Sleep(5000);
+                        if (!socket.Connected)
+                        {
+                            socket.Connect(point);
+                            Thread.Sleep(5000);
+                        }
+                        else
+                        {
+                            ProcessLinesAsync(socket).ConfigureAwait(false); ;
+                        }
                     }
-                    else
+                    catch (SocketException exp)
                     {
-                        ProcessLinesAsync(socket).ConfigureAwait(false); ;
+
                     }
                 }
 
