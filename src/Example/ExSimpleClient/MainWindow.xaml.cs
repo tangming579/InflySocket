@@ -35,7 +35,7 @@ namespace ExSimpleClient
 
         private void BtnSend_Click(object sender, RoutedEventArgs e)
         {
-            
+            client.Send(txbSend.Text);
         }
     }
 }

@@ -17,6 +17,15 @@ namespace InflySocket
         private Socket socket;
         public char separator = '#';
 
+        public bool IsConnected
+        {
+            get
+            {
+                if (socket == null) return false;
+                return socket.Connected;
+            }
+        }
+
         public void Connect(string ip, int port)
         {
             socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
@@ -54,13 +63,13 @@ namespace InflySocket
             }
         }
 
-        protected virtual void Send(byte[] buf)
+        public void Send(byte[] buf)
         {
             if (socket.Connected)
                 socket.Send(buf);
         }
 
-        protected virtual void Send(string msg)
+        public void Send(string msg)
         {
             var sendMsg = System.Text.Encoding.UTF8.GetBytes(msg);
             Send(sendMsg);
